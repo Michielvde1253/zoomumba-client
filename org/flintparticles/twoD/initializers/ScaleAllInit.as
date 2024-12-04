@@ -1,0 +1,68 @@
+package org.flintparticles.twoD.initializers
+{
+   import org.flintparticles.common.emitters.Emitter;
+   import org.flintparticles.common.initializers.InitializerBase;
+   import org.flintparticles.common.particles.Particle;
+   
+   public class ScaleAllInit extends InitializerBase
+   {
+      private var _min:Number;
+      
+      private var _max:Number;
+      
+      public function ScaleAllInit(param1:Number = 1, param2:Number = NaN)
+      {
+         super();
+         priority = -10;
+         this.minScale = param1;
+         this.maxScale = isNaN(param2) ? param1 : param2;
+      }
+      
+      public function get minScale() : Number
+      {
+         return this._min;
+      }
+      
+      public function set minScale(param1:Number) : void
+      {
+         this._min = param1;
+      }
+      
+      public function get maxScale() : Number
+      {
+         return this._max;
+      }
+      
+      public function set maxScale(param1:Number) : void
+      {
+         this._max = param1;
+      }
+      
+      public function get scale() : Number
+      {
+         return this._min == this._max ? this._min : (this._max + this._min) / 2;
+      }
+      
+      public function set scale(param1:Number) : void
+      {
+         this._max = this._min = param1;
+      }
+      
+      override public function initialize(param1:Emitter, param2:Particle) : void
+      {
+         var _loc3_:Number = NaN;
+         if(this._max == this._min)
+         {
+            _loc3_ = this._min;
+         }
+         else
+         {
+            _loc3_ = this._min + Math.random() * (this._max - this._min);
+         }
+         param2.scale = _loc3_;
+         param2.mass *= _loc3_ * _loc3_;
+         param2.collisionRadius *= _loc3_;
+      }
+   }
+}
+
