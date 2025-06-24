@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "animate",
+			"debug": false,
+			"publish": false,
+			"asconfig": "asconfig.json",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "Adobe Animate: compile release - Zoomumba.fla"
+		}
+	]
+}
